@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowLeft } from "lucide-react"
 import { EmailConfirmation } from "@/components/email-confirmation"
 import { LanguageSwitch } from "@/components/language-switch"
@@ -12,6 +12,12 @@ import { tBoth } from "@/lib/i18n"
 
 export function RsvpPageClient() {
   const [submitted, setSubmitted] = useState<RsvpData | null>(null)
+
+  useEffect(() => {
+    if (submitted) {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+  }, [submitted])
 
   return (
     <main className="relative min-h-dvh overflow-x-clip">

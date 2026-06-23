@@ -19,7 +19,7 @@ export function Story() {
           />
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border-4 border-card shadow-xl">
             <Image
-              src="/images/andrei-gabriela-sunset.png"
+              src="/images/gabriela-si-andrei-new-new.jpg"
               alt="Gabriela și Andrei"
               fill
               sizes="(max-width: 768px) 100vw, 24rem"

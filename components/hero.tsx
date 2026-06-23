@@ -81,12 +81,12 @@ export function Hero() {
             <div className="absolute -inset-4 rounded-full bg-secondary/60 blur-xl" />
             <div className="relative aspect-square w-72 overflow-hidden rounded-full border-4 border-card shadow-2xl sm:w-80 md:w-[26rem]">
               <Image
-                src="/images/andrei-gabriela.jpg"
+                src="/images/andrei-gabriela-new.jpg"
                 alt="Gabriela și Andrei"
                 fill
                 priority
                 sizes="(max-width: 768px) 20rem, 26rem"
-                className="object-cover"
+                className="object-cover object-[25%_center]"
               />
             </div>
           </div>
@@ -95,3 +95,4 @@ export function Hero() {
     </section>
   )
 }
+

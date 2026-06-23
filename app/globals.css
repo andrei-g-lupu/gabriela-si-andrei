@@ -126,7 +126,14 @@
   * {
     @apply border-border outline-ring/50;
   }
-  html {
+  ::selection {
+    background: color-mix(in oklch, var(--primary) 35%, transparent);
+    color: var(--foreground);
+  }
+  ::-moz-selection {
+    background: color-mix(in oklch, var(--primary) 35%, transparent);
+    color: var(--foreground);
+  }  html {
     @apply font-sans;
     /* reserve scrollbar space so content never shifts when page height changes */
     scrollbar-gutter: stable;
@@ -141,6 +148,7 @@
     /* hide scrollbar (Firefox) while keeping scroll functional */
     scrollbar-width: none;
   }
+
   /* hide scrollbar (Chrome, Safari, Edge) while keeping scroll functional */
   html::-webkit-scrollbar,
   body::-webkit-scrollbar {

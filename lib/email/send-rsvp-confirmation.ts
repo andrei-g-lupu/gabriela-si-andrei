@@ -13,7 +13,7 @@ function escapeHtml(value: string) {
 
 function buildDietLabels(data: RsvpPayload, lang: Lang) {
   const t = translations[lang]
-  const labels = data.diet
+  const labels: string[] = data.diet
     .filter((key) => key !== "other")
     .map((key) => {
       const option = t.rsvp.dietOptions[key as keyof typeof t.rsvp.dietOptions]

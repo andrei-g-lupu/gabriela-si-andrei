@@ -240,5 +240,8 @@ export type Translation = (typeof translations)["ro"]
 export function tBoth(
   getter: (t: Translation) => string,
 ): { ro: string; en: string } {
-  return { ro: getter(translations.ro), en: getter(translations.en) }
+  return {
+    ro: getter(translations.ro),
+    en: getter(translations.en as unknown as Translation),
+  }
 }

@@ -18,10 +18,10 @@ export function EmailConfirmation({
   const { t } = useLanguage()
 
   const dietKeys = data.diet as (keyof typeof t.rsvp.dietOptions)[]
-  const dietLabelsRo = dietKeys
+  const dietLabelsRo: string[] = dietKeys
     .filter((k) => k !== "other")
     .map((k) => translations.ro.rsvp.dietOptions[k])
-  const dietLabelsEn = dietKeys
+  const dietLabelsEn: string[] = dietKeys
     .filter((k) => k !== "other")
     .map((k) => translations.en.rsvp.dietOptions[k])
   if (data.diet.includes("other") && data.dietOther.trim()) {

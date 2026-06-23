@@ -54,6 +54,7 @@ export function RsvpForm({ onSubmit }: { onSubmit: (data: RsvpData) => void }) {
   const { t, lang } = useLanguage()
   const [error, setError] = useState<FormError>(null)
   const [submitting, setSubmitting] = useState(false)
+  const [formStartedAt] = useState(() => Date.now())
 
   const [form, setForm] = useState<RsvpData>({
     firstName: "",
@@ -110,7 +111,12 @@ export function RsvpForm({ onSubmit }: { onSubmit: (data: RsvpData) => void }) {
       const res = await fetch("/api/rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, lang }),
+        body: JSON.stringify({
+          ...form,
+          lang,
+          website: "",
+          formStartedAt,
+        }),
       })
 
       if (!res.ok) {
@@ -128,6 +134,14 @@ export function RsvpForm({ onSubmit }: { onSubmit: (data: RsvpData) => void }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="firstName" className="text-base">
@@ -421,3 +435,4 @@ function YesNo({
     </RadioGroup>
   )
 }
+

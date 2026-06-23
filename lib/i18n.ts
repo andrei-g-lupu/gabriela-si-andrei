@@ -101,7 +101,7 @@ export const translations = {
       diet: "Restricții alimentare",
       noDiet: "Fără restricții",
       body2:
-        "Vei primi mai multe detalii pe măsură ce ne apropiem de marele eveniment. Dacă planurile tale se schimbă, te rugăm să ne anunți.",
+        "Vei primi mai multe detalii pe măsură ce ne apropiem de marele eveniment. Dacă planurile tale se schimbă, te rugăm să ne anunți până la data de 15 august.",
       signature: "Cu drag,",
       names: "Gabriela & Andrei",
       again: "Trimite o altă confirmare",

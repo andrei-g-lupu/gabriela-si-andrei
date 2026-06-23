@@ -130,15 +130,12 @@ function buildHtml(data: RsvpPayload) {
 
 export async function sendRsvpConfirmation(
   data: RsvpPayload,
-): Promise<{ sent: boolean }> {
+): Promise<{ sent: true } | { sent: false; reason: string }> {
   const apiKey = process.env.RESEND_API_KEY?.trim()
   const from = process.env.RSVP_FROM_EMAIL?.trim()
 
   if (!apiKey || !from) {
-    console.warn(
-      "RSVP confirmation email skipped: set RESEND_API_KEY and RSVP_FROM_EMAIL",
-    )
-    return { sent: false }
+    return { sent: false, reason: "missing_email_config" }
   }
 
   const t = translations[data.lang]
@@ -152,8 +149,7 @@ export async function sendRsvpConfirmation(
   })
 
   if (error) {
-    console.error("RSVP confirmation email failed:", error.message)
-    return { sent: false }
+    return { sent: false, reason: error.message }
   }
 
   return { sent: true }

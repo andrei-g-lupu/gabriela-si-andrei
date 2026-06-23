@@ -38,7 +38,12 @@ const DIET_KEYS = [
   "other",
 ] as const
 
-type FormError = "required" | "selectEvent" | "submitFailed" | null
+type FormError =
+  | "required"
+  | "selectEvent"
+  | "alreadySubmitted"
+  | "submitFailed"
+  | null
 
 function choiceClasses(selected: boolean, shape: "card" | "pill") {
   return cn(
@@ -120,6 +125,11 @@ export function RsvpForm({ onSubmit }: { onSubmit: (data: RsvpData) => void }) {
       })
 
       if (!res.ok) {
+        if (res.status === 409) {
+          setError("alreadySubmitted")
+          return
+        }
+
         setError("submitFailed")
         return
       }
@@ -376,6 +386,8 @@ export function RsvpForm({ onSubmit }: { onSubmit: (data: RsvpData) => void }) {
             <StableText block {...tBoth((tr) => tr.rsvp.required)} />
           ) : error === "selectEvent" ? (
             <StableText block {...tBoth((tr) => tr.rsvp.selectEvent)} />
+          ) : error === "alreadySubmitted" ? (
+            <StableText block {...tBoth((tr) => tr.rsvp.alreadySubmitted)} />
           ) : (
             <StableText block {...tBoth((tr) => tr.rsvp.submitFailed)} />
           )}

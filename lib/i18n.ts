@@ -82,6 +82,8 @@ export const translations = {
       submitting: "Se trimite...",
       required: "Te rugăm completează câmpurile obligatorii.",
       selectEvent: "Te rugăm selectează cel puțin un eveniment.",
+      alreadySubmitted:
+        "Această adresă de email este deja înscrisă. Dacă ai nevoie să modifici confirmarea, te rugăm să îl contactezi direct pe Andrei.",
       submitFailed:
         "Nu am putut trimite confirmarea. Te rugăm încearcă din nou peste câteva momente.",
     },
@@ -198,6 +200,8 @@ export const translations = {
       submitting: "Sending...",
       required: "Please fill in the required fields.",
       selectEvent: "Please select at least one event.",
+      alreadySubmitted:
+        "This email address is already registered. If you need to change your RSVP, please contact Andrei directly.",
       submitFailed:
         "We couldn't send your confirmation. Please try again in a moment.",
     },

@@ -87,12 +87,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "server" }, { status: 500 })
   }
 
-  const { sent: emailSent } = await sendRsvpConfirmation(parsed.data)
+  const emailResult = await sendRsvpConfirmation(parsed.data)
+  if (!emailResult.sent) {
+    console.error("RSVP confirmation email failed:", emailResult.reason)
+    return NextResponse.json(
+      { error: "email_failed", saved: true },
+      { status: 502 },
+    )
+  }
 
   return NextResponse.json({
     ok: true,
     id: data.id,
     updated: false,
-    emailSent,
+    emailSent: true,
   })
 }
